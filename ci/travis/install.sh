@@ -15,9 +15,13 @@
 
 set -ex
 
-if [ "${TRAVIS_OS_NAME}" == "osx" ]; then
+if [ "$TRAVIS_OS_NAME" == "osx" ]; then
     unset -f cd
 fi
+
+echo "$TRAVIS_REPO_SLUG"
+echo "$TRAVIS_PULL_REQUEST_SLUG"
+echo "$TRAVIS_PULL_REQUEST"
 
 export SELF=`basename $TRAVIS_BUILD_DIR`
 cd ..
