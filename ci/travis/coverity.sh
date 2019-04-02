@@ -20,11 +20,16 @@
 set -ex
 
 pushd /tmp
+if [[ -z "$COVERITY_PROJECT_NAME" ]]; then
+  export COVERITY_PROJECT_NAME="$TRAVIS_REPO_SLUG"
+fi
+
 if [[ "$1" != "--skipdownload" ]]; then
   rm -rf coverity_tool.tgz cov-analysis*
-  wget -q https://scan.coverity.com/download/linux64 --post-data "token=$COVERITY_SCAN_TOKEN&project=$TRAVIS_REPO_SLUG" -O coverity_tool.tgz
+  wget -q https://scan.coverity.com/download/linux64 --post-data "token=$COVERITY_SCAN_TOKEN&project=$COVERITY_PROJECT_NAME" -O coverity_tool.tgz
   tar xzf coverity_tool.tgz
 fi
+
 COVBIN=$(echo $(pwd)/cov-analysis*/bin)
 export PATH=$COVBIN:$PATH
 popd
