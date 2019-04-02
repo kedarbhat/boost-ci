@@ -16,7 +16,7 @@
 set -ex
 
 if [ "$TRAVIS_OS_NAME" == "osx" ]; then
-    unset -f cd
+    unset -f cd pushd popd
 fi
 
 export SELF=`basename $TRAVIS_BUILD_DIR`
