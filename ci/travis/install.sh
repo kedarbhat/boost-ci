@@ -20,7 +20,13 @@ cd ..
 if [ "$SELF" == "interval" ]; then
     export SELF=numeric/interval
 fi
-export BOOST_BRANCH=develop && [ "$TRAVIS_BRANCH" == "master" ] && BOOST_BRANCH=master || true
+
+if [ "$TRAVIS_BRANCH" == "master" ]; then
+    export BOOST_BRANCH="master"
+else
+    export BOOST_BRANCH="develop"
+fi
+
 git clone -b $BOOST_BRANCH --depth 1 https://github.com/boostorg/boost.git boost-root
 cd boost-root
 git submodule update -q --init libs/headers
