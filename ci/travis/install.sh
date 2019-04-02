@@ -15,6 +15,10 @@
 
 set -ex
 
+if [ "${TRAVIS_OS_NAME}" == "osx" ]; then
+    unalias cd
+fi
+
 export SELF=`basename $TRAVIS_BUILD_DIR`
 cd ..
 if [ "$SELF" == "interval" ]; then
