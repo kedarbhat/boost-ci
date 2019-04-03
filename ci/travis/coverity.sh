@@ -42,6 +42,6 @@ curl --form token="$COVERITY_SCAN_TOKEN" \
      --form email="$COVERITY_SCAN_NOTIFICATION_EMAIL" \
      --form file=@cov-int.tar.xz \
      --form version="$BOOST_BRANCH" \
-     --form description="$TRAVIS_REPO_SLUG" \
-     https://scan.coverity.com/builds?project="$TRAVIS_REPO_SLUG"
+     --form description="$COVERITY_PROJECT_NAME" \
+     https://scan.coverity.com/builds?project="$COVERITY_PROJECT_NAME"
 
