@@ -32,7 +32,6 @@ fi
 
 COVBIN=$(echo $(pwd)/cov-analysis*/bin)
 export PATH=$COVBIN:$PATH
-cov-configure --template --compiler g++-7 --comptype gcc
 popd
 
 ci/travis/build.sh clean
